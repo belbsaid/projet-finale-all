@@ -453,8 +453,18 @@ export async function updateCarStatus(
       .populate("model", "name year")
       .populate("category", "name");
 
-    const brandName = typeof car.brand === "object" && car.brand ? (car.brand as any).name : "Unknown";
-    const modelName = typeof car.model === "object" && car.model ? (car.model as any).name : "";
+    if (!car) {
+      res.status(StatusCodes.NOT_FOUND).json({
+        success: false,
+        error: { message: "Car not found" },
+      });
+      return;
+    }
+
+    const brandName =
+      typeof car.brand === "object" && car.brand ? (car.brand as any).name : "Unknown";
+    const modelName =
+      typeof car.model === "object" && car.model ? (car.model as any).name : "";
     logActivity({
       type: "car_status_changed",
       title: `Car status → ${status}`,
