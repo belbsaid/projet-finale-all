@@ -270,8 +270,12 @@ export async function createCar(req: Request, res: Response): Promise<void> {
     const car = await CarModel.create(carData);
     await car.populate("brand model category");
 
-    const brandName = typeof car.brand === "object" && car.brand ? (car.brand as any).name : "Unknown";
-    const modelName = typeof car.model === "object" && car.model ? (car.model as any).name : "";
+    const brandName =
+      typeof car.brand === "object" && car.brand
+        ? (car.brand as any).name
+        : "Unknown";
+    const modelName =
+      typeof car.model === "object" && car.model ? (car.model as any).name : "";
     logActivity({
       type: "car_created",
       title: `New car added: ${brandName} ${modelName}`.trim(),
@@ -299,7 +303,7 @@ export async function createCar(req: Request, res: Response): Promise<void> {
 export async function updateCar(req: Request, res: Response): Promise<void> {
   try {
     const authReq = req as AuthenticatedRequest;
-    
+
     // Prevent accidental overriding of photos if client sends empty array
     if (req.body.photos && req.body.photos.length === 0) {
       delete req.body.photos;
@@ -324,10 +328,10 @@ export async function updateCar(req: Request, res: Response): Promise<void> {
     if (updateData.specs) {
       updateData.specs = { ...car.specs, ...updateData.specs };
     }
-    
+
     Object.assign(car, updateData);
     await car.save();
-    
+
     await car.populate("brand model category");
 
     res.status(StatusCodes.OK).json({ success: true, car });
@@ -358,8 +362,12 @@ export async function deleteCar(req: Request, res: Response): Promise<void> {
       return;
     }
 
-    const brandName = typeof car.brand === "object" && car.brand ? (car.brand as any).name : "Unknown";
-    const modelName = typeof car.model === "object" && car.model ? (car.model as any).name : "";
+    const brandName =
+      typeof car.brand === "object" && car.brand
+        ? (car.brand as any).name
+        : "Unknown";
+    const modelName =
+      typeof car.model === "object" && car.model ? (car.model as any).name : "";
 
     await CarModel.findByIdAndDelete(req.params.id);
 
@@ -462,13 +470,16 @@ export async function updateCarStatus(
     }
 
     const brandName =
-      typeof car.brand === "object" && car.brand ? (car.brand as any).name : "Unknown";
+      typeof car.brand === "object" && car.brand
+        ? (car.brand as any).name
+        : "Unknown";
     const modelName =
       typeof car.model === "object" && car.model ? (car.model as any).name : "";
     logActivity({
       type: "car_status_changed",
       title: `Car status → ${status}`,
-      description: `${brandName} ${modelName} · Stock #${currentCar.stockNumber}`.trim(),
+      description:
+        `${brandName} ${modelName} · Stock #${currentCar.stockNumber}`.trim(),
       entityId: car._id as any,
       entityType: "car",
       performedBy: authReq.user.id,
