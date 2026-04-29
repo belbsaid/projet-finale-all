@@ -1,0 +1,52 @@
+{
+  "id": "69d53f85067d85fb2f0aebe0",
+  "brand": {
+    "id": "69c93fd51777464a6dfe604d",
+    "name": "TOYOTA",
+    "displayName": "TOYOTA",
+    "logo": "",
+    "origin": "China"
+  },
+  "model": {
+    "id": "69c943651777464a6dfe60ac",
+    "name": "RSQ3",
+    "displayName": "RSQ3",
+    "year": 2026,
+    "engine": "1.5L Turbo",
+    "transmission": "Automatique",
+    "fuelType": "Essence",
+    "features": []
+  },
+  "category": {
+    "id": "69c943501777464a6dfe6097",
+    "name": "SUV",
+    "displayName": "SUV"
+  },
+  "year": 2026,
+  "vin": "1GKS1CE0XDR295159",
+  "stockNumber": "STOCK-00001",
+  "color": "black",
+  "colorCode": "",
+  "mileage": 0,
+  "finalPriceDZD": 250000,
+  "isDiscounted": false,
+  "status": "In Stock",
+  "arrivalDate": null,
+  "expectedDeliveryDate": null,
+  "soldDate": null,
+  "specs": {
+    "engine": "2",
+    "transmission": "Automatique",
+    "fuelType": "Essence",
+    "fuelConsumption": "",
+    "warranty": "3 ans / 100 000 km"
+  },
+  "features": [],
+  "photos": [
+    "/uploads/photos-1775584106273-87515705.jpeg"
+  ],
+  "videos": [],
+  "customerNotes": "",
+  "createdAt": "2026-04-07T17:31:49.977Z",
+  "updatedAt": "2026-04-07T17:48:26.323Z"
+}
