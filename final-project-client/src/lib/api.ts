@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 // We import getToken lazily to avoid circular deps with zustand store
 let _getToken: (() => string | null) | null = null;
@@ -7,10 +7,10 @@ export function registerTokenGetter(fn: () => string | null) {
 }
 
 const api = axios.create({
-  baseURL: 'http://localhost:4000/api',
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   timeout: 15000,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 });
 
@@ -32,9 +32,9 @@ api.interceptors.response.use(
       error.response?.data?.error?.message ||
       error.response?.data?.message ||
       error.message ||
-      'Une erreur est survenue';
+      "Une erreur est survenue";
     return Promise.reject(new Error(message));
-  }
+  },
 );
 
 export default api;
